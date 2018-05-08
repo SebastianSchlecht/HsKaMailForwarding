@@ -1,0 +1,1 @@
+Quick project to forward all unread mails to a designated email address.
