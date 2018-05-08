@@ -16,7 +16,7 @@ class ConfigParser {
         fun generateDefaultConfig(file: File) {
             FileWriter(file).use {
                 BufferedWriter(it).use {
-                    it.write(Klaxon().toJsonString(ConfigDao("mail@hs-karlsruhe.de","pwd","yourMail@provider.de")))
+                    it.write(Klaxon().toJsonString(ConfigDao("mail@hs-karlsruhe.de","123456","yourMail@provider.de")))
                 }
             }
 

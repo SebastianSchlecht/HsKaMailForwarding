@@ -41,15 +41,20 @@ fun main(args: Array<String>) {
 
     try {
         val mails = client.findUnreadMails()
-        client.forwardMails(mails, EmailAddress.getEmailAddressFromString(config.receiverMail))
 
-        mails.forEach {
-            logger.info("relayed: ${it.subject}")
+        if (mails.isEmpty()) {
+            logger.info("No unread mails detected.")
+        } else {
+            client.forwardMails(mails, EmailAddress.getEmailAddressFromString(config.receiverMail))
+
+            mails.forEach {
+                logger.info("relayed: ${it.subject}")
+            }
         }
     } catch (ex: Exception) {
         logger.severe("Message could't be relayed\n\n$ex")
     }
 
-    logger.info("Shutting down")
+
 }
 

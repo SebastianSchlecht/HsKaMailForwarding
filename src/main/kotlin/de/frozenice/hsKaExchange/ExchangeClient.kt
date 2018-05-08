@@ -53,7 +53,9 @@ class ExchangeClient(email: String, password: String ) {
         val findResults = service.findItems(WellKnownFolderName.Inbox, sf, ItemView(maxAmount))
 
         //MOOOOOOST IMPORTANT: load messages' properties before
-        service.loadPropertiesForItems(findResults, PropertySet.FirstClassProperties)
+        if (findResults.totalCount != 0) {
+            service.loadPropertiesForItems(findResults, PropertySet.FirstClassProperties)
+        }
 
          return findResults.map {
             it as EmailMessage
